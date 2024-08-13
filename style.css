@@ -29,3 +29,33 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#container {
+    margin: auto;
+}
+
+#rectangle{
+    width:250px;
+    height:200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#rectangle2{
+    width:250px;
+    height:200px;
+    margin-left: 100px;
+    margin-right: auto;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 

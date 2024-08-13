@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src = "hexGame.js"></script>
+    <title>HexcodeGame</title>
+</head>
+
+<body onload = "genColor()">
+
+    <header>
+        <h1>Hex Code Game</h1>
+        <p>Hexcodle Copy (easy mode)</p>
+    </header>
+    <section style="align-items: center;">
+
+        <div class="flex-container">
+            <div class="flex-child magenta" id="rectangle"></div>
+            <div class="flex-child green" id ="rectangle2"></div>
+        </div>
+    </section>
+
+    <section style="text-align: center;">
+        <input type="text" id="guess" name="guess"><br><br>
+        <input type="button" onclick="guessLogic()" value="Guess">
+    </section>
+
+    <footer>
+        &copy; 2024 Harshil Pathri. All rights reserved.
+    </footer>
+
+</body>
+
+</html>
