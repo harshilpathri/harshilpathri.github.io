@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="poker.css">
-    <script src = "poker.js"></script>
     <title>Poker Calculator</title>
 </head>
 
@@ -15,26 +14,31 @@
         <div class="nav-container" style="justify-content: space-between; width: 100%;">
             <div class="brand"><a href="/">Harshil Pathri</a></div>
             <div class="nav-links">
-                <a href="/hexGame">HexCodle</a>
-                <a href="/poker">Poker Simulator</a>
+                <a href="hexGame">HexCodle</a>
+                <a href="poker">Poker Simulator</a>
             </div>
         </div>
     </nav>
 
     <header>
-        <h1>Poker</h1>
         <p>Poker Odds Calculator</p>
     </header>
-
-    <div class="status">
-        <p>Selected Hand: <span id="hand-display"></span></p>
-        <p>Selected Board: <span id="board-display"></span></p>
-        <button class="reset-btn" onclick="resetSelection()">Reset</button>
-    </div>
+    <br>
 
     <div class="card-grid" id="card-grid"></div>
 
-    <script src="poker.js"></script>
+    <div class="hand-section">
+        <p>Your Hand:</p>
+        <div id="hand-display" class="selected-cards"></div>
+    </div>
+
+    <div class="board-section">
+        <p>Board:</p>
+        <div id="board-display" class="selected-cards"></div>
+    </div>
+
+
+    <script src = "poker.js"></script>
 
 </body>
 

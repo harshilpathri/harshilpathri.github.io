@@ -25,6 +25,28 @@
     transform: scale(1.1);
 }
 
+.card-img.selected-hand {
+    border: 2px solid #003fff;
+}
+
 .card-img.selected {
-    border: 2px solid #00ff88;
+    border: 2px solid #00ff48;
+}
+
+.selected-cards {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.selected-cards img {
+  width: 50px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hand-section, .board-section {
+  text-align: center;
+  margin-bottom: 1rem;
 }
