@@ -5,194 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="poker.css">
+    <script src = "poker.js"></script>
     <title>Poker Calculator</title>
 </head>
 
 <body>
+    <nav class="top-nav">
+        <div class="nav-container" style="justify-content: space-between; width: 100%;">
+            <div class="brand"><a href="/">Harshil Pathri</a></div>
+            <div class="nav-links">
+                <a href="/hexGame">HexCodle</a>
+                <a href="/poker">Poker Simulator</a>
+            </div>
+        </div>
+    </nav>
 
     <header>
         <h1>Poker</h1>
         <p>Poker Odds Calculator</p>
     </header>
 
-    <section>
-        <h2>Your Hand</h2>
-        <p>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select><br><br>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select>
-        </p>
-    </section>
+    <div class="status">
+        <p>Selected Hand: <span id="hand-display"></span></p>
+        <p>Selected Board: <span id="board-display"></span></p>
+        <button class="reset-btn" onclick="resetSelection()">Reset</button>
+    </div>
 
-    <section>
-        <h2>Flop</h2>
-        <p>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select><br><br>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select><br><br>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select><br><br>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select><br><br>
-            <select>
-                <option value=0></option>
-                <option value=1>A</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>J</option>
-                <option value=12>Q</option>
-                <option value=13>K</option>
-            </select>
-            <select>
-                <option value=0></option>
-                <option value=1>Spade</option>
-                <option value=2>Club</option>
-                <option value=3>Heart</option>
-                <option value=4>Diamond</option>
-            </select>
-        </p>
-    </section>
+    <div class="card-grid" id="card-grid"></div>
 
-    <section style="text-align: center;">
-        <p>
-            <button>Calculate Odds</button>
-        </p>
-    </section>
+    <script src="poker.js"></script>
 
 </body>
 
