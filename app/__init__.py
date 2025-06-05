@@ -1,6 +1,6 @@
 # __init__.py
 from flask import Flask, request, jsonify, render_template
-from utils.pokerMC import calculate_odds
+from app.utils.pokerMC import calculate_odds
 
 app = Flask(__name__)
 

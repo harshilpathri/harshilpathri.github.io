@@ -74,14 +74,13 @@ function resetSelection() {
 
 function calculateOdds() {
   if (selectedHand.length === 2) {
-    const resultBox = document.getElementById('resultBox');
-    resultBox.textContent = "Calculating...";
+    const spinner = document.getElementById('spinner');
+    resultBox.textContent = "";
+    spinner.style.display = 'block';
 
     fetch('/api/calculate', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         hand: selectedHand,
         board: selectedBoard
@@ -89,6 +88,8 @@ function calculateOdds() {
     })
     .then(res => res.json())
     .then(data => {
+      spinner.style.display = 'none';
+
       if (data.error) {
         resultBox.textContent = "Error: " + data.error;
         return;
@@ -96,10 +97,12 @@ function calculateOdds() {
       resultBox.textContent = `Win: ${(data.win * 100).toFixed(1)}%, Tie: ${(data.tie * 100).toFixed(1)}%, Lose: ${(data.lose * 100).toFixed(1)}%`;
     })
     .catch(err => {
+      spinner.style.display = 'none';
       resultBox.textContent = "Request failed: " + err.message;
     });
   }
 }
+
 
 
 
