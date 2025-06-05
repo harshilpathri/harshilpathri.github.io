@@ -25,20 +25,29 @@
     </header>
     <br>
 
-    <div class="card-grid" id="card-grid"></div>
+    <div class="poker-container">
+        <div class="card-grid" id="card-grid"></div>
 
-    <div class="hand-section">
-        <p>Your Hand:</p>
-        <div id="hand-display" class="selected-cards"></div>
+        <div class="selection-display">
+            <div class="hand-section">
+            <p>Your Hand:</p>
+            <div id="hand-display" class="selected-cards"></div>
+            </div>
+
+            <div class="board-section">
+            <p>Board:</p>
+                <div id="board-display" class="selected-cards"></div>
+            </div>
+
+            <button class="reset-btn" onclick="resetSelection()">Reset</button>
+
+            <button class="reset-btn" onclick="calculateOdds()">Calculate Odds</button>
+        </div>
     </div>
 
-    <div class="board-section">
-        <p>Board:</p>
-        <div id="board-display" class="selected-cards"></div>
-    </div>
+    <p id="resultBox" style="font-weight: bold; text-align: center; margin-top: 10px;"></p>
 
-
-    <script src = "poker.js"></script>
+    <script src = "static/js/poker.js"></script>
 
 </body>
 

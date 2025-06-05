@@ -50,3 +50,57 @@
   text-align: center;
   margin-bottom: 1rem;
 }
+
+.poker-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2rem;
+  gap: 60px;
+}
+
+/* Left column: fixed width, always left aligned */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(13, 50px);
+  gap: 10px;
+  flex-shrink: 0; /* don't allow it to shrink */
+}
+
+/* Right column: fills remaining space and centers content */
+.selection-display {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
+}
+
+/* Selected card display */
+.selected-cards {
+  display: flex;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.selected-cards img {
+  width: 50px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Reset button */
+.reset-btn {
+  background-color: #3498db;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.reset-btn:hover {
+  background-color: #2980b9;
+}
