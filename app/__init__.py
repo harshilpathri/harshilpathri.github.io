@@ -19,12 +19,18 @@ def hex_game():
 
 @app.route('/api/calculate', methods=['POST'])
 def api_calculate():
-    data = request.get_json()
-    hand = data.get('hand')
-    board = data.get('board')
+    try:
+        data = request.get_json(force=True)
+        hand = data.get('hand')
+        board = data.get('board', [])
 
-    if not hand:
-        return jsonify({"error": "Missing cards"}), 400
+        if not hand or len(hand) != 2:
+            return jsonify({"error": "Invalid hand input"}), 400
 
-    odds = calculate_odds(hand, board)
-    return jsonify(odds)
+        odds = calculate_odds(hand, board)
+        return jsonify(odds)
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500

@@ -240,8 +240,8 @@ def calculate_odds(hand, board = []):
     Dummy placeholder for now.
     'hand' and 'board' are lists of strings like ["AS", "KH"]
     """
-    # print(hand)
-    # print(board)
+    print(hand)
+    print(board)
     for i in range(len(hand)):
         if type(hand[i]) == str:
             hand[i] = cardToNumber(hand[i])
