@@ -7,7 +7,14 @@ SUITS = ["H", "D", "C", "S"]
 NUMBERS = np.array(["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"])
 
 def cardToNumber(card):
-    return int(np.where(NUMBERS == card[:-1])[0]) + SUITS.index(card[-1]) * 13
+    try:
+        value = card[:-1]
+        suit = card[-1]
+        return int(np.where(NUMBERS == value)[0]) + SUITS.index(suit) * 13
+    except Exception as e:
+        print(f"Invalid card: {card}")
+        raise
+
 
 def numberToCard(num):
     return NUMBERS[num % 13] + SUITS[num // 13]
@@ -240,14 +247,10 @@ def calculate_odds(hand, board = []):
     Dummy placeholder for now.
     'hand' and 'board' are lists of strings like ["AS", "KH"]
     """
+    hand = [cardToNumber(c) if isinstance(c, str) else c for c in hand]
+    board = [cardToNumber(c) if isinstance(c, str) else c for c in board]
     print(hand)
     print(board)
-    for i in range(len(hand)):
-        if type(hand[i]) == str:
-            hand[i] = cardToNumber(hand[i])
-    for i in range(len(board)):
-        if type(board[i]) == str:
-            board[i] = cardToNumber(board[i])
     board = Board(hand, board, players = 1)
     return board.doAll(10 ** 4)
     
