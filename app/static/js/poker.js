@@ -75,6 +75,7 @@ function resetSelection() {
 function calculateOdds() {
   if (selectedHand.length === 2) {
     const spinner = document.getElementById('spinner');
+    document.getElementById('results-section').style.display = 'block';
     resultBox.textContent = "";
     spinner.style.display = 'block';
 

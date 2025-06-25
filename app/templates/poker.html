@@ -4,52 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/poker.css">
-    <title>Poker Calculator</title>
+    <title>Poker Odds Calculator - Harshil Pathri</title>
 </head>
 
 <body>
     <nav class="top-nav">
-        <div class="nav-container" style="justify-content: space-between; width: 100%;">
+        <div class="nav-container">
             <div class="brand"><a href="/">Harshil Pathri</a></div>
             <div class="nav-links">
-                <a href="hexGame">HexCodle</a>
-                <a href="poker">Poker Simulator</a>
+                <a href="/hexGame">HexCodle</a>
+                <a href="/poker">Poker Simulator</a>
             </div>
         </div>
     </nav>
 
     <header>
-        <p>Poker Odds Calculator</p>
+        <h1>Poker Odds Calculator</h1>
+        <p>Select your cards and calculate winning probabilities</p>
     </header>
-    <br>
 
-    <div class="poker-container">
-        <div class="card-grid" id="card-grid"></div>
+    <main>
+        <section>
+            <h2>Card Selection</h2>
+            <div class="poker-container">
+                <div class="card-grid" id="card-grid"></div>
 
-        <div class="selection-display">
-            <div class="hand-section">
-            <p>Your Hand:</p>
-            <div id="hand-display" class="selected-cards"></div>
+                <div class="selection-display">
+                    <div class="hand-section">
+                        <h3>Your Hand</h3>
+                        <div id="hand-display" class="selected-cards"></div>
+                    </div>
+
+                    <div class="board-section">
+                        <h3>Community Cards</h3>
+                        <div id="board-display" class="selected-cards"></div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="reset-btn" onclick="resetSelection()">Reset Selection</button>
+                        <button class="calculate-btn" onclick="calculateOdds()">Calculate Odds</button>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="board-section">
-            <p>Board:</p>
-                <div id="board-display" class="selected-cards"></div>
-            </div>
+        <section id="results-section" style="display: none;">
+            <h2>Results</h2>
+            <div id="spinner" class="spinner"></div>
+            <div id="resultBox" class="results-display"></div>
+        </section>
+    </main>
 
-            <button class="reset-btn" onclick="resetSelection()">Reset</button>
-
-            <button class="reset-btn" onclick="calculateOdds()">Calculate Odds</button>
-        </div>
-    </div>
-
-    <div id="spinner" class="spinner" style="display: none;"></div>
-    <p id="resultBox" style="font-weight: bold; text-align: center; margin-top: 10px;"></p>
-
-
-    <script src = "static/js/poker.js"></script>
+    <script src="static/js/poker.js"></script>
 
 </body>
 

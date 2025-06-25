@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
-    <script src = "static/js/hexGame.js"></script>
-    <title>HexcodeGame</title>
+    <script src="static/js/hexGame.js"></script>
+    <title>HexCodle - Color Guessing Game</title>
 </head>
 
-<body onload = "genColor()">
+<body onload="genColor()">
     <nav class="top-nav">
-        <div class="nav-container" style="justify-content: space-between; width: 100%;">
+        <div class="nav-container">
             <div class="brand"><a href="/">Harshil Pathri</a></div>
             <div class="nav-links">
                 <a href="/hexGame">HexCodle</a>
@@ -19,22 +22,43 @@
             </div>
         </div>
     </nav>
+
     <header>
-        <h1>Hex Code Game</h1>
-        <p>Hexcodle Copy (easy mode)</p>
+        <h1>HexCodle</h1>
+        <p>Guess the hex color code!</p>
     </header>
-    <section style="align-items: center;">
 
-        <div class="flex-container">
-            <div class="flex-child magenta" id="rectangle"></div>
-            <div class="flex-child green" id ="rectangle2"></div>
-        </div>
-    </section>
+    <main>
+        <section>
+            <h2>HexCodle</h2>
+            <div class="hex-side-by-side">
+                <div class="color-area">
+                    <h3>Target Color</h3>
+                    <div class="color-box" id="targetColor"></div>
+                    <p class="color-label">This is the color you need to match</p>
+                </div>
+                <div class="color-area">
+                    <h3>Your Guess</h3>
+                    <div class="color-box" id="guessColor"></div>
+                    <div class="input-group">
+                        <input type="text" id="guess" name="guess" placeholder="Enter hex code (e.g., A1B2C3)" maxlength="6" pattern="[0-9A-Fa-f]{6}">
+                        <button type="button" onclick="guessLogic()" class="guess-btn">Guess</button>
+                    </div>
+                    <p id="feedback" class="feedback"></p>
+                </div>
+            </div>
+        </section>
 
-    <section style="text-align: center;">
-        <input type="text" id="guess" name="guess"><br><br>
-        <input type="button" onclick="guessLogic()" value="Guess">
-    </section>
+        <section>
+            <h2>How to Play</h2>
+            <ul>
+                <li>Look at the target color above</li>
+                <li>Enter a 3-digit hex code (0-9, A-F) to guess the color</li>
+                <li>Your guess will be displayed next to the target</li>
+                <li>Keep guessing until you match the color!</li>
+            </ul>
+        </section>
+    </main>
 
 </body>
 

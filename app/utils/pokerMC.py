@@ -252,7 +252,9 @@ def calculate_odds(hand, board = []):
     print(hand)
     print(board)
     board = Board(hand, board, players = 1)
-    return board.doAll(300)
+    output = board.doAll(10 ** 4)
+    print(output)
+    return output
     
 
 # print(calculate_odds([12, 25]))

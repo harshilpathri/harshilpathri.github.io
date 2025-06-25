@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 .card-picker {
     max-width: 900px;
     margin: 2rem auto;
@@ -13,7 +17,7 @@
 }
 
 .card-img {
-    width: 50px;
+    width: 52px;
     height: auto;
     cursor: pointer;
     border-radius: 6px;
@@ -34,88 +38,277 @@
 }
 
 .selected-cards {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 1rem;
+    min-height: 80px;
+    align-items: center;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    height: 80px;
+    box-sizing: border-box;
+}
+
+.selected-cards.board {
+    height: 80px;
+}
+
+.card-slot {
+    width: 52px;
+    height: 72px;
+    background: #f0f1f4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    border: 1.5px dashed #d1d5db;
+    transition: background 0.2s;
 }
 
 .selected-cards img {
-  width: 50px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    width: 52px;
+    height: 72px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: white;
+    border: none;
 }
 
 .hand-section, .board-section {
-  text-align: center;
-  margin-bottom: 1rem;
+    text-align: center;
 }
 
-.poker-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 2rem;
-  gap: 60px;
+.hand-section h3, .board-section h3 {
+    color: #2d3748;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
 
-/* Left column: fixed width, always left aligned */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(13, 50px);
-  gap: 10px;
-  flex-shrink: 0; /* don't allow it to shrink */
+.hand-section h3::after, .board-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
 }
 
-/* Right column: fills remaining space and centers content */
-.selection-display {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 1rem;
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
-/* Selected card display */
-.selected-cards {
-  display: flex;
-  gap: 10px;
-  margin-top: 0.5rem;
+.reset-btn, .calculate-btn {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.selected-cards img {
-  width: 50px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* Reset button */
 .reset-btn {
-  background-color: #3498db;
-  padding: 10px 20px;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #4a5568;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .reset-btn:hover {
-  background-color: #2980b9;
+    background: rgba(255, 255, 255, 1);
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+.calculate-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.calculate-btn:hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.calculate-btn:active, .reset-btn:active {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Spinner */
 .spinner {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #333;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Results Display */
+.results-display {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.1rem;
+    color: #2d3748;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .poker-container {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100vw;
+        padding: 0 0.2rem;
+    }
+    .card-grid {
+        max-width: 100vw;
+        min-width: 0;
+        grid-template-columns: repeat(13, 36px);
+        gap: 3px;
+        padding: 0.5rem;
+    }
+    .card-img, .selected-cards img {
+        width: 36px;
+    }
+    .selection-display {
+        max-width: 100%;
+        min-width: 0;
+        margin: 0 auto;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .poker-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(13, 50px);
+        gap: 6px;
+        padding: 1.5rem;
+    }
+    
+    .card-img {
+        width: 50px;
+    }
+    
+    .selected-cards img {
+        width: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(13, 40px);
+        gap: 4px;
+        padding: 1rem;
+    }
+    
+    .card-img {
+        width: 40px;
+    }
+    
+    .selected-cards {
+        gap: 8px;
+        padding: 0.8rem;
+    }
+    
+    .selected-cards img {
+        width: 40px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .reset-btn, .calculate-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: repeat(13, 35px);
+        gap: 3px;
+    }
+    
+    .card-img {
+        width: 35px;
+    }
+    
+    .selected-cards img {
+        width: 35px;
+    }
+}
+
+.hand-board-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    margin: 2rem 0 1.5rem 0;
+}
+
+@media (max-width: 700px) {
+    .hand-board-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+
+.poker-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+    margin: 1.2rem auto;
+    max-width: 100vw;
+    width: 100%;
+    padding: 0 0.2rem 0 0;
+    overflow-x: visible;
+    box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+    .poker-container {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100vw;
+        padding: 0 0.2rem;
+    }
 }
