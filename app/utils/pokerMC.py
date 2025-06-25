@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import time
+import multiprocessing
 
 
 SUITS = ["H", "D", "C", "S"]
@@ -241,20 +242,68 @@ class Board():
             
 
     
+def sim_worker(args):
+    hand, kboard, players, n = args
+    win = 0
+    lose = 0
+    tie = 0
+    for _ in range(n):
+        try:
+            tUsedCards = hand + kboard
+            tUsedCards = tUsedCards.copy()
+            # Fill opponents
+            others = []
+            for _ in range(players):
+                opp = []
+                while len(opp) < 2:
+                    card = random.randint(0, 51)
+                    if card not in tUsedCards:
+                        opp.append(card)
+                        tUsedCards.append(card)
+                others.append(opp)
+            # Fill board
+            board = kboard.copy()
+            while len(board) < 5:
+                card = random.randint(0, 51)
+                if card not in tUsedCards:
+                    tUsedCards.append(card)
+                    board.append(card)
+            # Evaluate
+            p1 = getHandStrength(hand + board)
+            opp_strengths = [getHandStrength(opp + board) for opp in others]
+            max_opp = max(opp_strengths)
+            if p1 == max_opp:
+                tie += 1
+            elif p1 > max_opp:
+                win += 1
+            else:
+                lose += 1
+        except Exception as e:
+            # Optionally log or count errors
+            continue
+    total = win + lose + tie
+    if total == 0:
+        return {"win": 0, "lose": 0, "tie": 0}
+    return {
+        "win": win / total,
+        "lose": lose / total,
+        "tie": tie / total
+    }
 
-def calculate_odds(hand, board = []):
-    """
-    Dummy placeholder for now.
-    'hand' and 'board' are lists of strings like ["AS", "KH"]
-    """
+def calculate_odds(hand, board=[], simCount=10**4, n_jobs=4):
     hand = [cardToNumber(c) if isinstance(c, str) else c for c in hand]
     board = [cardToNumber(c) if isinstance(c, str) else c for c in board]
-    print(hand)
-    print(board)
-    board = Board(hand, board, players = 1)
-    output = board.doAll(10 ** 4)
-    print(output)
-    return output
+    per_job = simCount // n_jobs
+    args = [(hand, board, 1, per_job) for _ in range(n_jobs)]
+    with multiprocessing.Pool(n_jobs) as pool:
+        results = pool.map(sim_worker, args)
+    # Aggregate results
+    win = sum(r['win'] for r in results) / n_jobs
+    lose = sum(r['lose'] for r in results) / n_jobs
+    tie = sum(r['tie'] for r in results) / n_jobs
+    return {"win": round(win, 4), "lose": round(lose, 4), "tie": round(tie, 4)}
     
-
-# print(calculate_odds([12, 25]))
+if __name__ == "__main__":
+    start = time.time()
+    print(calculate_odds([12, 25]))
+    print(time.time() - start)
