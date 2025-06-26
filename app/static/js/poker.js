@@ -75,9 +75,9 @@ function resetSelection() {
 function calculateOdds() {
   if (selectedHand.length === 2) {
     const spinner = document.getElementById('spinner');
-    document.getElementById('results-section').style.display = 'block';
-    resultBox.textContent = "";
+    const resultBoxDiv = document.getElementById('resultBox');
     spinner.style.display = 'block';
+    resultBoxDiv.classList.add('hidden');
 
     fetch('/api/calculate', {
       method: 'POST',
@@ -90,7 +90,7 @@ function calculateOdds() {
     .then(res => res.json())
     .then(data => {
       spinner.style.display = 'none';
-
+      resultBoxDiv.classList.remove('hidden');
       if (data.error) {
         resultBox.textContent = "Error: " + data.error;
         return;
@@ -99,12 +99,18 @@ function calculateOdds() {
     })
     .catch(err => {
       spinner.style.display = 'none';
+      resultBoxDiv.classList.remove('hidden');
       resultBox.textContent = "Request failed: " + err.message;
     });
   }
 }
 
-
-
+document.addEventListener('DOMContentLoaded', function() {
+  const resultBoxDiv = document.getElementById('resultBox');
+  if (resultBoxDiv) {
+    resultBoxDiv.textContent = 'No results yet.';
+    resultBoxDiv.classList.remove('hidden');
+  }
+});
 
 renderCards();

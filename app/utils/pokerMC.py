@@ -290,7 +290,7 @@ def sim_worker(args):
         "tie": tie / total
     }
 
-def calculate_odds(hand, board=[], simCount=3 * 10**3, n_jobs=4):
+def calculate_odds(hand, board=[], simCount=10 ** 5, n_jobs=4):
     hand = [cardToNumber(c) if isinstance(c, str) else c for c in hand]
     board = [cardToNumber(c) if isinstance(c, str) else c for c in board]
     per_job = simCount // n_jobs
