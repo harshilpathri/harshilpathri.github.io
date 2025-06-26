@@ -1,4 +1,5 @@
 # __init__.py
+import time
 from flask import Flask, request, jsonify, render_template
 from app.utils.pokerMC import calculate_odds
 
@@ -19,6 +20,7 @@ def hex_game():
 
 @app.route('/api/calculate', methods=['POST'])
 def api_calculate():
+    start = time.time()
     try:
         data = request.get_json(force=True)
         hand = data.get('hand')
@@ -28,6 +30,7 @@ def api_calculate():
             return jsonify({"error": "Invalid hand input"}), 400
 
         odds = calculate_odds(hand, board)
+        print(f"Time taken: {time.time() - start} seconds")
         return jsonify(odds)
 
     except Exception as e:
