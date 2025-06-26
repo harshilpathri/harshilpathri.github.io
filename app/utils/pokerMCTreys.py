@@ -37,7 +37,7 @@ def _treys_worker(args):
 
     return win, tie, lose
 
-def treys_calculate_odds(hand, board=None, simCount=10**5, n_jobs=4):
+def treys_calculate_odds(hand, board=None, simCount = 3 * 10**3, n_jobs=4):
     if board is None:
         board = []
     per_job = simCount // n_jobs
