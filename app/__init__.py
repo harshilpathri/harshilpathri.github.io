@@ -14,6 +14,10 @@ def index():
 def poker():
     return render_template('poker.html')
 
+@app.route('/megaGem')
+def megaGem():
+    return render_template('megaGem.html')
+
 @app.route('/hexGame')
 def hex_game():
     return render_template('hexGame.html')
